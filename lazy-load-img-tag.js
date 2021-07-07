@@ -1,0 +1,6 @@
+/*
+* 1. Remove src attribute from your image
+* 2. Add data-src attribute to your image with image URL
+* 3. Add lazy-img class to your image
+*/
+window.addEventListener("load",function(){if("IntersectionObserver"in window){let e,t=document.querySelectorAll(".lazy-img"),n=new IntersectionObserver(function(t,r){t.forEach(function(t){t.isIntersecting&&(t=t.target,e=t.getAttribute("data-src"),t.setAttribute('src', e),n.unobserve(t))})});t.forEach(function(e){n.observe(e)})}else{var t,n=function(){t&&clearTimeout(t),t=setTimeout(function(){var t=window.pageYOffset;e.forEach(function(e){e.offsetTop<window.innerHeight+t&&(e.src=e.dataset.src,img=e.getAttribute("data-src"),e.setAttribute('src', img))}),0==e.length&&(document.removeEventListener("scroll",n),window.removeEventListener("resize",n),window.removeEventListener("orientationChange",n))},20)};e=document.querySelectorAll(".lazy-img"),document.addEventListener("scroll",n),window.addEventListener("resize",n),window.addEventListener("orientationChange",n)}});

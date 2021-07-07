@@ -1,0 +1,5 @@
+/*
+* 1. Add data-bg-image attribute to your image container with image URL
+* 2. Add lazy-bg-set class to your image container
+*/
+window.addEventListener("load",function(){if("IntersectionObserver"in window){let e,t=document.querySelectorAll(".lazy-bg-set"),n=new IntersectionObserver(function(t,r){t.forEach(function(t){t.isIntersecting&&(t=t.target,e=t.getAttribute("data-bg-image"),t.style.backgroundImage=`url(${e})`,n.unobserve(t))})});t.forEach(function(e){n.observe(e)})}else{var t,n=function(){t&&clearTimeout(t),t=setTimeout(function(){var t=window.pageYOffset;e.forEach(function(e){e.offsetTop<window.innerHeight+t&&(e.src=e.dataset.src,img=e.getAttribute("data-bg-image"),e.style.backgroundImage=`url(${img})`)}),0==e.length&&(document.removeEventListener("scroll",n),window.removeEventListener("resize",n),window.removeEventListener("orientationChange",n))},20)};e=document.querySelectorAll(".lazy-bg-set"),document.addEventListener("scroll",n),window.addEventListener("resize",n),window.addEventListener("orientationChange",n)}});

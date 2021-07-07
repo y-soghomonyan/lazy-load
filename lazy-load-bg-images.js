@@ -1,0 +1,5 @@
+/*
+* 1. Add ".lazy{background-image: none !important}" to your head tag
+* 2. Add lazy class to your image container
+*/
+window.addEventListener("load",function(){if("IntersectionObserver"in window){var e=document.querySelectorAll(".lazy");var g=new IntersectionObserver(function(b,c){b.forEach(function(d){d.isIntersecting&&(d=d.target,d.classList.remove("lazy"),g.unobserve(d))})});e.forEach(function(b){g.observe(b)})}else{var a=function(){f&&clearTimeout(f);f=setTimeout(function(){var b=window.pageYOffset;e.forEach(function(c){c.offsetTop<window.innerHeight+b&&(c.src=c.dataset.src,c.classList.remove("lazy"))});0==e.length&&(document.removeEventListener("scroll",a),window.removeEventListener("resize",a),window.removeEventListener("orientationChange",a))},20)},f;e=document.querySelectorAll(".lazy");document.addEventListener("scroll",a);window.addEventListener("resize",a);window.addEventListener("orientationChange",a)}});
